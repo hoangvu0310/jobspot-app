@@ -22,8 +22,6 @@ module.exports = defineConfig([
 				{ argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
 			],
 			'@typescript-eslint/no-explicit-any': 'warn',
-
-			'no-console': ['warn', { allow: ['warn', 'error'] }],
 		},
 	},
 
