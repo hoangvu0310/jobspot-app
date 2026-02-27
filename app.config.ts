@@ -8,7 +8,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
 		description: 'Jobspot App',
 		version: '1.0.0',
 		orientation: 'default',
-		icon: './assets/icons/app/icon.png',
+		icon: './assets/app/icon.png',
 		scheme: 'jobspot-app',
 		userInterfaceStyle: 'automatic',
 		newArchEnabled: true,
@@ -18,12 +18,14 @@ export default ({ config }: ConfigContext): ExpoConfig => {
 			config: {
 				usesNonExemptEncryption: false,
 			},
+			bundleIdentifier: 'hoang.jobspot.app',
 		},
 
 		android: {
 			adaptiveIcon: {
 				foregroundImage: './assets/app/adaptive-icon.png',
 			},
+			package: 'hoang.jobspot.app',
 		},
 
 		web: {
