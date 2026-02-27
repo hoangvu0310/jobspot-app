@@ -6,3 +6,4 @@ expo-env.d.ts
 bun.lock
 ios
 android
+uniwind-types.d.ts

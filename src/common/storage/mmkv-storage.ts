@@ -1,5 +1,9 @@
 import { createMMKV } from 'react-native-mmkv'
 
+export const SettingKeys = {
+	LANGUAGE: 'language',
+}
+
 const mmkvStorage = createMMKV({
 	id: 'jobspot-app-storage',
 	encryptionKey: 'jobspot-app',

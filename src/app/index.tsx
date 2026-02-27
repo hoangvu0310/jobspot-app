@@ -1,18 +1,16 @@
 import { StatusBar } from 'expo-status-bar'
 import { Text, View } from 'react-native'
+import '@/i18n'
 
 export default function App() {
 	return (
 		<View className="flex-1 items-center justify-center bg-white px-8 dark:bg-black">
 			{/* Heading */}
-			<Text className="mb-3 text-4xl font-extrabold tracking-tight text-gray-800 dark:text-white">
-				🚀 Welcome
-			</Text>
+			<Text className="mb-3 text-4xl font-extrabold tracking-tight text-gray-800 dark:text-white">🚀 Welcome</Text>
 
 			{/* Subheading */}
 			<Text className="mb-8 text-center text-xl leading-relaxed text-gray-700 dark:text-white">
-				Build beautiful apps with{' '}
-				<Text className="font-semibold text-blue-500">Expo (Router) + Uniwind 🔥</Text>
+				Build beautiful apps with <Text className="font-semibold text-blue-500">Expo (Router) + Uniwind 🔥</Text>
 			</Text>
 
 			{/* Instruction text */}

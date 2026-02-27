@@ -1,2 +1,2 @@
 export * from './secure-storage'
-export * from './mmkv'
+export * from './mmkv-storage'
