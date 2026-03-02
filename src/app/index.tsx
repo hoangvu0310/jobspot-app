@@ -1,8 +1,10 @@
 import { StatusBar } from 'expo-status-bar'
-import { Text, View } from 'react-native'
-import '@/i18n'
+import { Button, Text, View } from 'react-native'
+import { useTheme } from '@/context'
 
 export default function App() {
+	const { setTheme } = useTheme()
+
 	return (
 		<View className="flex-1 items-center justify-center bg-white px-8 dark:bg-black">
 			{/* Heading */}
@@ -18,6 +20,10 @@ export default function App() {
 				Start customizing your app by editing{' '}
 				<Text className="font-semibold text-gray-800 dark:text-white">app/index.tsx</Text>
 			</Text>
+
+			<Button title={'Dark Theme'} onPress={() => setTheme('dark')} />
+			<Button title={'Light Theme'} onPress={() => setTheme('light')} />
+			<Button title={'System Theme'} onPress={() => setTheme('system')} />
 
 			<StatusBar style="dark" />
 		</View>

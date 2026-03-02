@@ -2,6 +2,7 @@ import { createMMKV } from 'react-native-mmkv'
 
 export const SettingKeys = {
 	LANGUAGE: 'language',
+	THEME: 'theme',
 }
 
 const mmkvStorage = createMMKV({
@@ -12,11 +13,11 @@ const mmkvStorage = createMMKV({
 	readOnly: false,
 })
 
-export function getItem(key: string): string | undefined {
+export function getMMKVItem(key: string): string | undefined {
 	return mmkvStorage.getString(key)
 }
 
-export function setItem({ key, value }: { key: string; value: string }): boolean {
+export function setMMKVItem({ key, value }: { key: string; value: string }): boolean {
 	try {
 		mmkvStorage.set(key, value)
 		return true
