@@ -1,7 +1,7 @@
 import axios, { type AxiosError, type InternalAxiosRequestConfig } from 'axios'
 import { errorLogger, requestLogger, responseLogger } from 'axios-logger'
 import { API_CONFIG } from '@/common/constants'
-import { getSecureItem, StorageKeys } from '@/common/storage'
+import { getSecureItem, SecureStorageKeys } from '@/common/storage'
 
 const apiClient = axios.create({
 	baseURL: API_CONFIG.API_URL + API_CONFIG.API_VERSION,
@@ -26,7 +26,7 @@ apiClient.interceptors.request.use(
 	async (config: InternalAxiosRequestConfig) => {
 		requestLogger(config, loggerConfig)
 
-		const accessToken = await getSecureItem(StorageKeys.ACCESS_TOKEN)
+		const accessToken = await getSecureItem(SecureStorageKeys.ACCESS_TOKEN)
 		if (accessToken) {
 			config.headers.Authorization = `Bearer ${accessToken}`
 		}

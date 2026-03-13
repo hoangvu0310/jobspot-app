@@ -1,31 +1,50 @@
-import { StatusBar } from 'expo-status-bar'
-import { Button, Text, View } from 'react-native'
-import { useTheme } from '@/context'
+import { useCallback, useEffect, useState } from 'react'
+import { hideAsync } from 'expo-splash-screen'
+import { type Href, Redirect } from 'expo-router'
+import { clearSecureStorage, getSecureItem, SecureStorageKeys } from '@/common/storage'
+import { jwtDecode } from 'jwt-decode'
 
 export default function App() {
-	const { setTheme } = useTheme()
+	const [ready, setReady] = useState<boolean>(false)
+	const [route, setRoute] = useState<Href | null>(null)
 
-	return (
-		<View className="flex-1 items-center justify-center bg-white px-8 dark:bg-black">
-			{/* Heading */}
-			<Text className="mb-3 text-4xl font-extrabold tracking-tight text-gray-800 dark:text-white">🚀 Welcome</Text>
+	const preloadData = useCallback(async () => {
+		const accessToken = await getSecureItem(SecureStorageKeys.ACCESS_TOKEN)
+		if (!accessToken) {
+			console.log('No access token found')
+			setRoute('/(auth)/sign-in')
+			return
+		}
 
-			{/* Subheading */}
-			<Text className="mb-8 text-center text-xl leading-relaxed text-gray-700 dark:text-white">
-				Build beautiful apps with <Text className="font-semibold text-blue-500">Expo (Router) + Uniwind 🔥</Text>
-			</Text>
+		try {
+			const decoded = jwtDecode(accessToken)
+			if (decoded.exp && Date.now() < decoded.exp * 1000) {
+				console.log('Token is valid')
+				setRoute('/(main)/home')
 
-			{/* Instruction text */}
-			<Text className="max-w-sm text-center text-base text-gray-600 dark:text-white">
-				Start customizing your app by editing{' '}
-				<Text className="font-semibold text-gray-800 dark:text-white">app/index.tsx</Text>
-			</Text>
+				// TODO: preload data
+			} else {
+				console.log('Token is expired')
+				await clearSecureStorage()
+				// TODO: refresh token
+			}
+		} catch (e) {
+			console.error('Invalid token', e)
+			setRoute('/(auth)/sign-in')
+		}
+	}, [])
 
-			<Button title={'Dark Theme'} onPress={() => setTheme('dark')} />
-			<Button title={'Light Theme'} onPress={() => setTheme('light')} />
-			<Button title={'System Theme'} onPress={() => setTheme('system')} />
+	useEffect(() => {
+		preloadData().then(() => setReady(true))
 
-			<StatusBar style="dark" />
-		</View>
-	)
+		if (ready) {
+			hideAsync().then(() => console.log('Splash screen hide'))
+			return
+		}
+		return
+	}, [preloadData, ready])
+
+	if (!ready) return null
+
+	return <Redirect href={route || '/(auth)/sign-in'} />
 }

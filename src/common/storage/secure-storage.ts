@@ -1,6 +1,6 @@
 import * as SecureStorage from 'expo-secure-store'
 
-export const StorageKeys = {
+export const SecureStorageKeys = {
 	ACCESS_TOKEN: 'access_token',
 	REFRESH_TOKEN: 'refresh_token',
 }
@@ -19,7 +19,7 @@ export async function removeSecureItem(key: string): Promise<void> {
 
 export async function clearSecureStorage(): Promise<void> {
 	await Promise.all([
-		SecureStorage.deleteItemAsync(StorageKeys.ACCESS_TOKEN),
-		SecureStorage.deleteItemAsync(StorageKeys.REFRESH_TOKEN),
+		SecureStorage.deleteItemAsync(SecureStorageKeys.ACCESS_TOKEN),
+		SecureStorage.deleteItemAsync(SecureStorageKeys.REFRESH_TOKEN),
 	])
 }

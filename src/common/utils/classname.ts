@@ -1,7 +1,7 @@
-import { cx } from 'class-variance-authority'
+import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
-// using cx from cva as it is the export of clsx from cva package
-export function cn(...inputs: string[]) {
-	return twMerge(cx(...inputs))
+// ClassName utility function
+export function cn(...inputs: ClassValue[]) {
+	return twMerge(clsx(...inputs))
 }

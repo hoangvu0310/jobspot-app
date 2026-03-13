@@ -24,8 +24,14 @@
     --text-body-xs: 13px;
 
     /* Colors */
+    --color-base-main: #858C95;
+    --color-base-second: #979AA0;
     --color-base-white: #FFFFFF;
     --color-base-black: #000000;
+
+    --color-border-main: #E5E5E7;
+    --color-border-focus: #A4CFFD;
+    --color-border-error: #FFD8D8;
 
     --color-neutral-25: #FCFCFD;
     --color-neutral-50: #FAFBFC;
@@ -117,4 +123,12 @@
     --color-purple-800: #352DC8;
     --color-purple-900: #33059F;
     --color-purple-950: #33059F;
+}
+
+@layer utilities {
+    .center-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

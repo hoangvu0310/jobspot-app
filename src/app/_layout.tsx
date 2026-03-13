@@ -1,21 +1,32 @@
 import '../global.css'
 import '@/i18n'
 
-import { Slot } from 'expo-router'
+import { Stack } from 'expo-router'
 import { ThemeProvider } from '@/context'
 import {
-	useFonts,
 	JosefinSans_400Regular,
 	JosefinSans_500Medium,
 	JosefinSans_600SemiBold,
 	JosefinSans_700Bold,
+	useFonts,
 } from '@expo-google-fonts/josefin-sans'
 import { useEffect } from 'react'
-import * as SplashScreen from 'expo-splash-screen'
+import { preventAutoHideAsync, setOptions } from 'expo-splash-screen'
+import { QueryClientProvider } from '@tanstack/react-query'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { KeyboardProvider } from 'react-native-keyboard-controller'
+import { queryClient } from '@/common/api'
+import { StatusBar } from 'expo-status-bar'
 
-SplashScreen.preventAutoHideAsync()
+setOptions({
+	duration: 500,
+	fade: true,
+})
 
-export default function Layout() {
+preventAutoHideAsync()
+
+export default function RootLayout() {
 	const [loaded, error] = useFonts({
 		JosefinSans_400Regular,
 		JosefinSans_500Medium,
@@ -29,14 +40,25 @@ export default function Layout() {
 		}
 
 		if (loaded) {
-			console.info('Fonts loaded')
-			SplashScreen.hideAsync()
+			console.log('Fonts loaded')
 		}
 	}, [error, loaded])
 
 	return (
-		<ThemeProvider>
-			<Slot />
-		</ThemeProvider>
+		<SafeAreaProvider>
+			<GestureHandlerRootView>
+				<KeyboardProvider>
+					<QueryClientProvider client={queryClient}>
+						<ThemeProvider>
+							<Stack>
+								<Stack.Screen name={'index'} options={{ headerShown: false }} />
+								<Stack.Screen name={'(auth)'} options={{ headerShown: false }} />
+							</Stack>
+							<StatusBar style={'auto'} animated={true} />
+						</ThemeProvider>
+					</QueryClientProvider>
+				</KeyboardProvider>
+			</GestureHandlerRootView>
+		</SafeAreaProvider>
 	)
 }
