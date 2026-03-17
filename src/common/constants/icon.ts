@@ -2,4 +2,11 @@ export const ICONS = {
 	EyeHide: require('@assets/icons/eye-hide.svg'),
 	Unlock: require('@assets/icons/unlock.svg'),
 	Mail: require('@assets/icons/mail.svg'),
+	Tick: require('@assets/icons/tick.svg'),
+	Untick: require('@assets/icons/untick.svg'),
+	RadioCheck: require('@assets/icons/radio-check.svg'),
+	RadioUncheck: require('@assets/icons/radio-uncheck.svg'),
+	Facebook: require('@assets/icons/facebook.svg'),
+	Twitter: require('@assets/icons/twitter.svg'),
+	Google: require('@assets/icons/google.svg'),
 }

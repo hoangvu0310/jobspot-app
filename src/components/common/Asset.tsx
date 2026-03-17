@@ -1,6 +1,6 @@
 import { type ImageProps } from 'expo-image'
 import { StyledImage } from '@/components/styled'
-import { Pressable } from 'react-native'
+import { PressableWrapper } from '@/components/common/Button'
 
 interface AssetProps extends Omit<ImageProps, 'className'> {
 	size?: number
@@ -12,24 +12,31 @@ interface AssetProps extends Omit<ImageProps, 'className'> {
 
 export const Asset = ({
 	size = 28,
-	tintColorClassName = 'accent-base-main',
+	tintColorClassName,
 	className,
 	onPress,
 	activeOpacity = 0.8,
 	...props
 }: AssetProps) => {
 	return (
-		<Pressable
-			disabled={onPress === null}
-			onPress={onPress}
-			style={({ pressed }) => ({ opacity: pressed ? activeOpacity : 1 })}
-		>
-			<StyledImage
-				style={{ width: size, height: size }}
-				tintColorClassName={tintColorClassName}
-				className={className}
-				{...props}
-			/>
-		</Pressable>
+		<>
+			{onPress === undefined ? (
+				<StyledImage
+					style={{ width: size, height: size }}
+					tintColorClassName={tintColorClassName}
+					className={className}
+					{...props}
+				/>
+			) : (
+				<PressableWrapper onPress={onPress} activeOpacity={activeOpacity}>
+					<StyledImage
+						style={{ width: size, height: size }}
+						tintColorClassName={tintColorClassName}
+						className={className}
+						{...props}
+					/>
+				</PressableWrapper>
+			)}
+		</>
 	)
 }
