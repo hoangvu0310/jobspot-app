@@ -14,6 +14,12 @@ const vi = {
 		continue: 'Tiếp tục với',
 		dontHaveAccount: 'Bạn chưa có tài khoản ? ',
 		signUpRoute: 'Đăng kí',
+
+		signUp: 'Đăng Kí',
+		confirmPassword: 'Xác nhận mật khẩu',
+		rememberMe: 'Ghi nhớ tôi',
+		alreadyHaveAccount: 'Bạn đã có tài khoản ? ',
+		signInRoute: 'Đăng nhập',
 	},
 }
 

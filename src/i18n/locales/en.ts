@@ -14,6 +14,12 @@ const en = {
 		continue: 'Continue with',
 		dontHaveAccount: 'Dont have an account ? ',
 		signUpRoute: 'Sign up',
+
+		signUp: 'Sign Up',
+		confirmPassword: 'Confirm password',
+		rememberMe: 'Remember me',
+		alreadyHaveAccount: 'Already have an account ? ',
+		signInRoute: 'Sign in',
 	},
 }
 
