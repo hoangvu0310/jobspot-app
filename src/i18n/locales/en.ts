@@ -5,11 +5,14 @@ const en = {
 		requirePasswordConfirm: 'Password confirmation is required',
 		passwordConfirmNotMatch: 'Password confirmation not match',
 	},
+	common: {
+		continue: 'Continue',
+	},
 	auth: {
 		signIn: 'Sign In',
 		email: 'Email',
 		password: 'Password',
-		forgotPassword: 'Forgot Password?',
+		forgotPasswordRoute: 'Forgot Password?',
 		keepSignIn: 'Keep me signed in',
 		continue: 'Continue with',
 		dontHaveAccount: 'Dont have an account ? ',
@@ -20,6 +23,18 @@ const en = {
 		rememberMe: 'Remember me',
 		alreadyHaveAccount: 'Already have an account ? ',
 		signInRoute: 'Sign in',
+
+		forgotPassword: 'Forgot Password',
+		unlockAccount: 'Unlock Account',
+		selectResetMethod: 'Select which method you want to reset your passwod',
+		viaSMS: 'Via SMS',
+		viaEmail: 'Via Email',
+		fourDigitCode: '4 Digit Code',
+		enterCode: 'Please enter the code we have sent to',
+		resendCodeIn: 'Resend OTP in',
+		resendCode: 'Resend OTP',
+		changeNumber: 'Change number',
+		changeEmail: 'Change email',
 	},
 }
 

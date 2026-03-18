@@ -5,11 +5,14 @@ const vi = {
 		requirePasswordConfirm: 'Xác nhận mật khẩu không được để trống',
 		passwordConfirmNotMatch: 'Mật khẩu không trùng khớp',
 	},
+	common: {
+		continue: 'Tiếp tục',
+	},
 	auth: {
 		signIn: 'Đăng Nhập',
 		email: 'Email',
 		password: 'Mật khẩu',
-		forgotPassword: 'Quên mật khẩu?',
+		forgotPasswordRoute: 'Quên mật khẩu?',
 		keepSignIn: 'Ghi nhớ đăng nhập',
 		continue: 'Tiếp tục với',
 		dontHaveAccount: 'Bạn chưa có tài khoản ? ',
@@ -20,6 +23,18 @@ const vi = {
 		rememberMe: 'Ghi nhớ tôi',
 		alreadyHaveAccount: 'Bạn đã có tài khoản ? ',
 		signInRoute: 'Đăng nhập',
+
+		forgotPassword: 'Quên mật khẩu',
+		unlockAccount: 'Mở khóa tài khoản',
+		selectResetMethod: 'Chọn phương thức để cài lại mật khẩu của bạn',
+		viaSMS: 'Qua SMS',
+		viaEmail: 'Qua Email',
+		fourDigitCode: 'Mã 4 Chữ Số',
+		enterCode: 'Vui lòng nhập mã chúng tôi đã gửi tới',
+		resendCodeIn: 'Gửi lại OTP trong',
+		resendCode: 'Gửi lại OTP',
+		changeNumber: 'Đổi số điện thoại',
+		changeEmail: 'Đổi Email',
 	},
 }
 

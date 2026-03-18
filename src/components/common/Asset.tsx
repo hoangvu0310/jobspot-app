@@ -22,7 +22,7 @@ export const Asset = ({
 		<>
 			{onPress === undefined ? (
 				<StyledImage
-					style={{ width: size, height: size }}
+					style={className ? undefined : { width: size, height: size }}
 					tintColorClassName={tintColorClassName}
 					className={className}
 					{...props}

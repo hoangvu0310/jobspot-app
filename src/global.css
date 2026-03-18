@@ -4,9 +4,9 @@
 @theme {
     /* Fonts family */
     --font-app-regular: 'JosefinSans_400Regular';
-    --font-app-medium: 'JosefinSans_400Regular';
-    --font-app-semibold: 'JosefinSans_400Regular';
-    --font-app-bold: 'JosefinSans_400Regular';
+    --font-app-medium: 'JosefinSans_500Medium';
+    --font-app-semibold: 'JosefinSans_600SemiBold';
+    --font-app-bold: 'JosefinSans_700Bold';
 
     /* Font size */
     --text-headline-xl: 36px;

@@ -9,4 +9,7 @@ export const ICONS = {
 	Facebook: require('@assets/icons/facebook.svg'),
 	Twitter: require('@assets/icons/twitter.svg'),
 	Google: require('@assets/icons/google.svg'),
+	ArrowLeft: require('@assets/icons/arrow-left.svg'),
+	SMS: require('@assets/icons/sms.svg'),
+	Envelope: require('@assets/icons/envelope.svg'),
 }

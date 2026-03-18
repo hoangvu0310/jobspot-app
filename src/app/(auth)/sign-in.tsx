@@ -88,12 +88,12 @@ export default function SignInScreen() {
 					</View>
 
 					<View className={'center-content gap-12.5'}>
-						<PressableWrapper onPress={() => {}}>
+						<PressableWrapper onPress={() => router.push('/(auth)/(password)/forgot-password')}>
 							<Typography
 								variant={'bodyXXL'}
 								weight={'semibold'}
 								className={'pt-5 text-gray-100'}
-								i18nKey={'auth.forgotPassword'}
+								i18nKey={'auth.forgotPasswordRoute'}
 							/>
 						</PressableWrapper>
 
