@@ -1,3 +1,4 @@
 export * from './apis'
-export * from './icon'
+export * from './icons'
 export * from './images'
+export * from './dimensions'

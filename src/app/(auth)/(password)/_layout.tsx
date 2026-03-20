@@ -5,6 +5,7 @@ export default function ResetPasswordLayout() {
 		<Stack>
 			<Stack.Screen name={'forgot-password'} options={{ headerShown: false }} />
 			<Stack.Screen name={'otp'} options={{ headerShown: false }} />
+			<Stack.Screen name={'new-password'} options={{ headerShown: false }} />
 		</Stack>
 	)
 }

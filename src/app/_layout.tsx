@@ -50,10 +50,12 @@ export default function RootLayout() {
 				<KeyboardProvider>
 					<QueryClientProvider client={queryClient}>
 						<ThemeProvider>
-							<Stack>
-								<Stack.Screen name={'index'} options={{ headerShown: false }} />
-								<Stack.Screen name={'(auth)'} options={{ headerShown: false }} />
-							</Stack>
+							<SafeAreaProvider>
+								<Stack>
+									<Stack.Screen name={'index'} options={{ headerShown: false }} />
+									<Stack.Screen name={'(auth)'} options={{ headerShown: false }} />
+								</Stack>
+							</SafeAreaProvider>
 							<StatusBar style={'auto'} animated={true} />
 						</ThemeProvider>
 					</QueryClientProvider>

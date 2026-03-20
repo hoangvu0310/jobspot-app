@@ -35,6 +35,11 @@ const vi = {
 		resendCode: 'Gửi lại OTP',
 		changeNumber: 'Đổi số điện thoại',
 		changeEmail: 'Đổi Email',
+
+		createPassword: 'Tạo mật khẩu',
+		createNewPassword: 'Tạo mật khẩu mới của bạn',
+		congratulations: 'Chúc mừng !!',
+		createNewPasswordSuccess: 'Mật khẩu mới đã được tạo thành công',
 	},
 }
 

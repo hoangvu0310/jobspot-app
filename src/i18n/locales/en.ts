@@ -35,6 +35,11 @@ const en = {
 		resendCode: 'Resend OTP',
 		changeNumber: 'Change number',
 		changeEmail: 'Change email',
+
+		createPassword: 'Create Password',
+		createNewPassword: 'Create your new password',
+		congratulations: 'Congratulations !!',
+		createNewPasswordSuccess: 'New password has been created successfully',
 	},
 }
 

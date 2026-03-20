@@ -1,6 +1,7 @@
 import { type ImageProps } from 'expo-image'
 import { StyledImage } from '@/components/styled'
 import { PressableWrapper } from '@/components/common/Button'
+import { Image as RNImage, type ImageSourcePropType } from 'react-native'
 
 interface AssetProps extends Omit<ImageProps, 'className'> {
 	size?: number
@@ -8,6 +9,7 @@ interface AssetProps extends Omit<ImageProps, 'className'> {
 	className?: string
 	onPress?: () => void
 	activeOpacity?: number
+	assetType?: 'image' | 'icon'
 }
 
 export const Asset = ({
@@ -16,13 +18,18 @@ export const Asset = ({
 	className,
 	onPress,
 	activeOpacity = 0.8,
+	assetType = 'icon',
 	...props
 }: AssetProps) => {
+	const assetInfo = RNImage.resolveAssetSource(props.source as ImageSourcePropType)
+
 	return (
 		<>
 			{onPress === undefined ? (
 				<StyledImage
-					style={className ? undefined : { width: size, height: size }}
+					style={
+						assetType === 'icon' ? { width: size, height: size } : { aspectRatio: assetInfo.width / assetInfo.height }
+					}
 					tintColorClassName={tintColorClassName}
 					className={className}
 					{...props}
@@ -30,7 +37,9 @@ export const Asset = ({
 			) : (
 				<PressableWrapper onPress={onPress} activeOpacity={activeOpacity}>
 					<StyledImage
-						style={{ width: size, height: size }}
+						style={
+							assetType === 'icon' ? { width: size, height: size } : { aspectRatio: assetInfo.width / assetInfo.height }
+						}
 						tintColorClassName={tintColorClassName}
 						className={className}
 						{...props}
