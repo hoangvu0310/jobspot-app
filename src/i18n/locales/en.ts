@@ -41,6 +41,10 @@ const en = {
 		congratulations: 'Congratulations !!',
 		createNewPasswordSuccess: 'New password has been created successfully',
 	},
+
+	profileSetup: {
+		setupYourProfile: 'Setup your profile',
+	},
 }
 
 export default en

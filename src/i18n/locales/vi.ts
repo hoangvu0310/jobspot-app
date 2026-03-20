@@ -40,6 +40,10 @@ const vi = {
 		createNewPassword: 'Tạo mật khẩu mới của bạn',
 		congratulations: 'Chúc mừng !!',
 		createNewPasswordSuccess: 'Mật khẩu mới đã được tạo thành công',
+
+		profileSetup: {
+			setupYourProfile: 'Cài đặt hồ sơ của bạn',
+		},
 	},
 }
 
