@@ -1,8 +1,7 @@
 import { cva, type VariantProps } from 'class-variance-authority'
-import React, { forwardRef, memo, useState } from 'react'
-import { type ImageSourcePropType, TextInput, View } from 'react-native'
+import React, { forwardRef, memo, useImperativeHandle, useRef, useState } from 'react'
+import { type ImageSourcePropType, Pressable, TextInput, View } from 'react-native'
 import { Typography } from '@/components/common/Typography'
-import type { ClassValue } from 'clsx'
 import { cn } from '@/common/utils/classname'
 import { Asset } from '@/components/common/Asset'
 import { ICONS } from '@/common/constants'
@@ -38,7 +37,8 @@ export interface InputProps extends React.ComponentPropsWithoutRef<typeof TextIn
 	onPressRightIcon?: () => void
 	onPressLeftIcon?: () => void
 	iconSize?: number
-	containerClassName?: ClassValue
+	containerClassName?: string
+	inputViewClassName?: string
 }
 
 export type PasswordInputProps = Omit<InputProps, 'leftIconSource' | 'rightIconSource'>
@@ -59,6 +59,7 @@ const Input = memo(
 				iconSize = 28,
 				containerClassName,
 				className,
+				inputViewClassName,
 				variant,
 				size = 'large',
 				editable = true,
@@ -67,6 +68,7 @@ const Input = memo(
 			ref,
 		) => {
 			const [isFocused, setIsFocused] = useState(false)
+			const internalRef = useRef<TextInput>(null)
 
 			const finalText = error || hintText
 			const isDisabled = !editable || false
@@ -77,75 +79,80 @@ const Input = memo(
 				'bg-neutral-100': isDisabled,
 			})
 
+			const focus = () => {
+				internalRef.current?.focus()
+			}
+
+			useImperativeHandle(ref, () => internalRef.current as TextInput)
+
 			return (
-				<View className={'gap-1.5'}>
-					{label && (
-						<Typography
-							variant={'bodyXL'}
-							weight={'semibold'}
-							className={cn(isDisabled ? 'text-base-second' : 'text-gray-100')}
-							i18nKey={label}
-						/>
-					)}
-					<View
-						className={cn(
-							'flex-row items-center gap-4',
-							inputVariants({ variant: variant, size: size }),
-							focusErrorStyle,
-							containerClassName,
+				<Pressable onPress={focus} className={containerClassName}>
+					<View className={'gap-1.5'}>
+						{label && (
+							<Typography
+								variant={'bodyXL'}
+								weight={'semibold'}
+								className={cn(isDisabled ? 'text-base-second' : 'text-gray-100')}
+								i18nKey={label}
+							/>
 						)}
-					>
-						{leftIcon
-							? leftIcon
-							: leftIconSource && (
-									<Asset
-										source={leftIconSource}
-										size={iconSize}
-										onPress={onPressLeftIcon}
-										tintColorClassName={cn('accent-base-main', {
-											'accent-primary-300': isFocused,
-											'accent-error-700': error,
-										})}
-									/>
-								)}
-						<TextInput
+						<View
 							className={cn(
-								'flex-1 text-body-xl font-semibold',
+								'flex-row items-center gap-4',
+								inputVariants({ variant: variant, size: size }),
 								{ 'py-4': size === 'small', 'py-5': size === 'medium', 'py-5.75': size === 'large' },
-								className,
+								focusErrorStyle,
+								inputViewClassName,
 							)}
-							placeholderTextColorClassName={cn('accent-base-main')}
-							cursorColorClassName={cn(error ? 'accent-error-700' : 'accent-base-black')}
-							onFocus={() => setIsFocused(true)}
-							onBlur={() => setIsFocused(false)}
-							autoCorrect={false}
-							editable={editable}
-							{...props}
-							ref={ref}
-						/>
-						{rightIcon
-							? rightIcon
-							: rightIconSource && (
-									<Asset
-										source={rightIconSource}
-										size={iconSize}
-										onPress={onPressRightIcon}
-										tintColorClassName={cn('accent-base-main', {
-											'accent-primary-300': isFocused,
-											'accent-error-700': error,
-										})}
-									/>
-								)}
+						>
+							{leftIcon
+								? leftIcon
+								: leftIconSource && (
+										<Asset
+											source={leftIconSource}
+											size={iconSize}
+											onPress={onPressLeftIcon}
+											tintColorClassName={cn('accent-base-main', {
+												'accent-primary-300': isFocused,
+												'accent-error-700': error,
+											})}
+										/>
+									)}
+							<TextInput
+								className={cn('flex-1 text-body-xl font-semibold', className)}
+								placeholderTextColorClassName={cn('accent-base-main')}
+								cursorColorClassName={cn(error ? 'accent-error-700' : 'accent-base-black')}
+								onFocus={() => setIsFocused(true)}
+								onBlur={() => setIsFocused(false)}
+								autoCorrect={false}
+								editable={editable}
+								{...props}
+								ref={internalRef}
+							/>
+							{rightIcon
+								? rightIcon
+								: rightIconSource && (
+										<Asset
+											source={rightIconSource}
+											size={iconSize}
+											onPress={onPressRightIcon}
+											tintColorClassName={cn('accent-base-main', {
+												'accent-primary-300': isFocused,
+												'accent-error-700': error,
+											})}
+										/>
+									)}
+						</View>
+						{finalText && (
+							<Typography
+								variant={'bodyS'}
+								weight={'regular'}
+								className={cn(error && 'text-error-700', !error && 'text-base-main')}
+								i18nKey={finalText}
+							/>
+						)}
 					</View>
-					{finalText && (
-						<Typography
-							variant={'bodyS'}
-							weight={'regular'}
-							className={cn(error && 'text-error-700', !error && 'text-base-main')}
-							i18nKey={finalText}
-						/>
-					)}
-				</View>
+				</Pressable>
 			)
 		},
 	),
@@ -174,5 +181,19 @@ const PasswordInput = memo(
 
 Input.displayName = 'Input'
 PasswordInput.displayName = 'PasswordInput'
+
+// const InputWrapper = (props: InputProps) => {
+// 	const ref = useRef<TextInput>(null)
+//
+// 	const focus = useCallback(() => {
+// 		ref.current?.focus()
+// 	}, [])
+//
+// 	return (
+// 		<Pressable onPress={focus}>
+// 			<Input ref={ref} {...props} />
+// 		</Pressable>
+// 	)
+// }
 
 export { Input, PasswordInput }

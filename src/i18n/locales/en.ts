@@ -1,12 +1,13 @@
 const en = {
 	error: {
-		requireUsername: 'Username is required',
+		requireEmail: 'Email is required',
 		requirePassword: 'Password is required',
 		requirePasswordConfirm: 'Password confirmation is required',
 		passwordConfirmNotMatch: 'Password confirmation not match',
 	},
 	common: {
 		continue: 'Continue',
+		saveAndContinue: 'Save & Continue',
 	},
 	auth: {
 		signIn: 'Sign In',
@@ -44,6 +45,27 @@ const en = {
 
 	profileSetup: {
 		setupYourProfile: 'Setup your profile',
+		completeYourProfile: 'Please complete your profile so we can deliver you the best experience',
+		skipForNow: 'Skip for now',
+
+		personInfo: {
+			personalInfo: 'Personal Info',
+			name: 'Name',
+			phoneNumber: 'Phone number',
+			emailAddress: 'Email address',
+			address: 'Address',
+			description: 'Self description',
+		},
+
+		eduInfo: {
+			education: 'Education',
+			enterDetails: 'Enter Details',
+			eduFacility: 'Education Facility',
+			major: 'Major',
+			startTime: 'Start',
+			endTime: 'End',
+			addDetails: 'Add more details',
+		},
 	},
 }
 

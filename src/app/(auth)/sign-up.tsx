@@ -14,12 +14,12 @@ import { useRouter } from 'expo-router'
 
 const signUpSchema = z
 	.object({
-		email: z.string().min(1, { error: 'auth.requireEmail' }),
-		password: z.string().min(1, { error: 'auth.requirePassword' }),
-		confirmPassword: z.string().min(1, { error: 'auth.requirePasswordConfirm' }),
+		email: z.string().min(1, { error: 'error.requireEmail' }),
+		password: z.string().min(1, { error: 'error.requirePassword' }),
+		confirmPassword: z.string().min(1, { error: 'error.requirePasswordConfirm' }),
 	})
 	.refine((form) => form.password === form.confirmPassword, {
-		error: 'auth.passwordNotMatch',
+		error: 'error.passwordNotMatch',
 		path: ['confirmPassword'],
 	})
 
@@ -39,7 +39,8 @@ export default function SignUpScreen() {
 
 	const signUp = useCallback(() => {
 		Keyboard.dismiss()
-	}, [])
+		router.replace('/(profile-setup)')
+	}, [router])
 
 	const onPressToSignIn = () => {
 		if (router.canGoBack()) {
@@ -55,7 +56,7 @@ export default function SignUpScreen() {
 			<SafeAreaLayout className={'center-content p-4'}>
 				<View className={'mb-1 w-full flex-1 items-center justify-end'}>
 					<View className={'w-full gap-8'}>
-						<Typography weight={'semibold'} i18nKey={'auth.signIn'} className={'text-center text-[40px]'} />
+						<Typography weight={'semibold'} i18nKey={'auth.signUp'} className={'text-center text-[40px]'} />
 
 						<StyledKeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
 							<View className={'gap-6 rounded-[15px] bg-neutral-300 px-4.5 py-8'}>

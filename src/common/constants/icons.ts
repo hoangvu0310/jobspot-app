@@ -12,4 +12,11 @@ export const ICONS = {
 	ArrowLeft: require('@assets/icons/arrow-left.svg'),
 	SMS: require('@assets/icons/sms.svg'),
 	Envelope: require('@assets/icons/envelope.svg'),
+	User: require('@assets/icons/user.svg'),
+	Phone: require('@assets/icons/phone.svg'),
+	Address: require('@assets/icons/address.svg'),
+	School: require('@assets/icons/school.svg'),
+	Calendar: require('@assets/icons/calendar.svg'),
+	Close: require('@assets/icons/close.svg'),
+	Add: require('@assets/icons/add.svg'),
 }

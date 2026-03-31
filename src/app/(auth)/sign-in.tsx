@@ -13,7 +13,7 @@ import { StyledKeyboardAvoidingView } from '@/components/styled'
 import { useRouter } from 'expo-router'
 
 const signInSchema = z.object({
-	email: z.string().min(1, { error: 'error.requireUsername' }),
+	email: z.string().min(1, { error: 'error.requireEmail' }),
 	password: z.string().min(1, { error: 'error.requirePassword' }),
 })
 

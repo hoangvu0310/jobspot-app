@@ -12,6 +12,7 @@ type DetailScreenLayoutProps = {
 	canGoBack?: boolean
 	children: React.ReactNode
 	containerClassName?: string
+	onBack?: () => void
 }
 
 export const DetailScreenLayout = ({
@@ -19,8 +20,18 @@ export const DetailScreenLayout = ({
 	canGoBack = true,
 	children,
 	containerClassName,
+	onBack,
 }: DetailScreenLayoutProps) => {
 	const router = useRouter()
+
+	const handleBack = () => {
+		if (onBack) {
+			onBack()
+			return
+		}
+
+		router.back()
+	}
 
 	return (
 		<SafeAreaLayout className={'px-4'}>
@@ -31,7 +42,7 @@ export const DetailScreenLayout = ({
 							source={ICONS.ArrowLeft}
 							size={28}
 							tintColorClassName={cn('accent-base-black')}
-							onPress={() => router.back()}
+							onPress={handleBack}
 						/>
 					)}
 					{titleKey && <Typography variant={'navHeader'} weight={'bold'} i18nKey={titleKey} />}

@@ -1,6 +1,6 @@
 import { DetailScreenLayout } from '@/components/layout'
 import { Button, Typography } from '@/components/common'
-import { OTPInput } from '@/components/auth'
+import { OTPInput } from '@/components/screen/auth'
 import { useLocalSearchParams, useRouter } from 'expo-router'
 import { Keyboard, Platform, Pressable, View } from 'react-native'
 import { useTranslation } from 'react-i18next'

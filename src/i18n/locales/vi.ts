@@ -1,12 +1,13 @@
 const vi = {
 	error: {
-		requireUsername: 'Tài khoản không được để trống',
+		requireEmail: 'Email không được để trống',
 		requirePassword: 'Mật khẩu không được để trống',
 		requirePasswordConfirm: 'Xác nhận mật khẩu không được để trống',
 		passwordConfirmNotMatch: 'Mật khẩu không trùng khớp',
 	},
 	common: {
 		continue: 'Tiếp tục',
+		saveAndContinue: 'Lưu & Tiếp tục',
 	},
 	auth: {
 		signIn: 'Đăng Nhập',
@@ -43,6 +44,17 @@ const vi = {
 
 		profileSetup: {
 			setupYourProfile: 'Cài đặt hồ sơ của bạn',
+			completeYourProfile: 'Hãy hoàn thiện hồ sơ của bạn để chúng tôi mang đến trải nghiệm tốt nhất',
+			skipForNow: 'Bỏ qua',
+		},
+
+		eduInfo: {
+			education: 'Học vấn',
+			enterDetails: 'Thông tin chi tiết',
+			major: 'Chuyên ngành',
+			startTime: 'Bắt đầu',
+			endTime: 'Kết thúc',
+			addDetails: 'Thêm thông tin',
 		},
 	},
 }
